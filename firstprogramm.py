@@ -8,7 +8,7 @@ from sudprakt import kp, mena, dar, arenda, lizing, podrad, uslugi, perevozka, c
 
 # 🔑 Токен берём из переменной окружения
 TOKEN = os.getenv("BOT_TOKEN")
-bot = telebot.TeleBot(TOKEN)
+bot = telebot.TeleBot(TOKEN, parse_mode='HTML')
 
 @bot.message_handler(commands=['start'])
 def hello(message):
@@ -87,7 +87,7 @@ def callback(call):
           markup = types.InlineKeyboardMarkup()
           markup.add(types.InlineKeyboardButton("Право", callback_data="law"))
           markup.add(types.InlineKeyboardButton("Термины", callback_data="chinese"))
-          start_text = "\n\n" + "\n".join(hello1)   # твой стартовый текст
+          start_text = "\n\n" + "\n".join(hello1)  
           bot.send_message(call.message.chat.id, start_text, reply_markup=markup)
 
 
@@ -98,7 +98,7 @@ def callback(call):
           markup = types.InlineKeyboardMarkup()
           markup.add(types.InlineKeyboardButton("Право", callback_data="law"))
           markup.add(types.InlineKeyboardButton("Термины", callback_data="chinese"))
-          start_text = "\n\n" + "\n".join(hello1)   # твой стартовый текст
+          start_text = "\n\n" + "\n".join(hello1)  
           bot.send_message(call.message.chat.id, start_text, reply_markup=markup)
 
     if call.data == "chinese":
@@ -106,19 +106,26 @@ def callback(call):
             btn1_1 = types.InlineKeyboardButton ("КНР",callback_data="chinese_terms")
             btn1_2 = types.InlineKeyboardButton ("система законодательства",callback_data="chinese_terms_2")
             btn1_3 = types.InlineKeyboardButton ("договоры",callback_data="chinese_terms_3")
-            markup.add(btn1_1, btn1_2, btn1_3)
+            btn_home = types.InlineKeyboardButton("🏠 В начало", callback_data="home")
+            markup.add(btn1_1, btn1_2, btn1_3, btn_home)
 
             bot.edit_message_text (chat_id=call.message.chat.id, message_id=call.message.message_id, text="Выберите", reply_markup=markup)
             bot.answer_callback_query(call.id)
     elif call.data == "chinese_terms":
             text = "КНР:\n\n" + '\n'.join(terms)
             bot.send_message(call.message.chat.id,text)
+            start_text = "\n\n" + "\n".join(hello1)  
+            bot.send_message(call.message.chat.id, start_text, reply_markup=markup)
     elif call.data == "chinese_terms_2":
             text = "система законодательства:\n\n" + '\n'.join(term1)
             bot.send_message(call.message.chat.id,text)
+            start_text = "\n\n" + "\n".join(hello1)  
+            bot.send_message(call.message.chat.id, start_text, reply_markup=markup)
     elif call.data == "chinese_terms_3":
             text = "договоры:\n\n" + '\n'.join(term2)
             bot.send_message(call.message.chat.id,text)
+            start_text = "\n\n" + "\n".join(hello1)  
+            bot.send_message(call.message.chat.id, start_text, reply_markup=markup)
 
     elif call.data == "law_rf":
           markup = types.InlineKeyboardMarkup()
