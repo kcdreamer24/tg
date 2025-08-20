@@ -8,7 +8,7 @@ from sudprakt import kp, mena, dar, arenda, lizing, podrad, uslugi, perevozka, c
 
 # 🔑 Токен берём из переменной окружения
 TOKEN = os.getenv("BOT_TOKEN")
-bot = telebot.TeleBot(TOKEN, parse_mode='HTML')
+bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
 def hello(message):
