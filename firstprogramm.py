@@ -8,7 +8,7 @@ from sudprakt import kp, mena, dar, arenda, lizing, podrad, uslugi, perevozka, c
 
 # 🔑 Токен берём из переменной окружения
 TOKEN = os.getenv("BOT_TOKEN")
-bot = telebot.TeleBot(TOKEN, parse_mode="HTML")
+bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
 def hello(message):
@@ -113,15 +113,15 @@ def callback(call):
             bot.answer_callback_query(call.id)
     elif call.data == "chinese_terms":
             text = "КНР:\n\n" + '\n'.join(terms)
-            bot.send_message(call.message.chat.id,text)
+            bot.send_message(call.message.chat.id,text, parse_mode='HTML')
         
     elif call.data == "chinese_terms_2":
             text = "система законодательства:\n\n" + '\n'.join(term1)
-            bot.send_message(call.message.chat.id,text)
+            bot.send_message(call.message.chat.id,text, parse_mode='HTML')
 
     elif call.data == "chinese_terms_3":
             text = "договоры:\n\n" + '\n'.join(term2)
-            bot.send_message(call.message.chat.id,text)
+            bot.send_message(call.message.chat.id,text, parse_mode='HTML')
     elif call.data == "law_rf":
           markup = types.InlineKeyboardMarkup()
           btn4 = types.InlineKeyboardButton('Гражданское право', callback_data = 'gk')  
@@ -160,49 +160,49 @@ def callback(call):
           bot.answer_callback_query(call.id)
     elif call.data == "kp":
       text = "\n\n" + '\n'.join(kp)
-      bot.send_message(call.message.chat.id,text)
+      bot.send_message(call.message.chat.id,text, parse_mode='HTML')
     elif call.data == "mena":
       text = "\n\n" + '\n'.join(mena)
-      bot.send_message(call.message.chat.id,text)
+      bot.send_message(call.message.chat.id,text, parse_mode='HTML')
     elif call.data == "dar":
       text = "\n\n" + '\n'.join(dar)
-      bot.send_message(call.message.chat.id,text)
+      bot.send_message(call.message.chat.id,text, parse_mode='HTML')
     elif call.data == "arenda":
       text = "\n\n" + '\n'.join(arenda)
-      bot.send_message(call.message.chat.id,text)
+      bot.send_message(call.message.chat.id,text, parse_mode='HTML')
     elif call.data == "lizing":
       text = "\n\n" + '\n'.join(lizing)
-      bot.send_message(call.message.chat.id,text)
+      bot.send_message(call.message.chat.id,text, parse_mode='HTML')
     elif call.data == "podrad":
       text = "\n\n" + '\n'.join(podrad)
-      bot.send_message(call.message.chat.id,text)
+      bot.send_message(call.message.chat.id,text, parse_mode='HTML')
     elif call.data == "uslugi":
       text = "\n\n" + '\n'.join(uslugi)
-      bot.send_message(call.message.chat.id,text)
+      bot.send_message(call.message.chat.id,text, parse_mode='HTML')
     elif call.data == "perevozka":
       text = "\n\n" + '\n'.join(perevozka)
-      bot.send_message(call.message.chat.id,text)
+      bot.send_message(call.message.chat.id,text, parse_mode='HTML')
     elif call.data == "celine":
       text = "\n\n" + '\n'.join(celine)
-      bot.send_message(call.message.chat.id,text)
+      bot.send_message(call.message.chat.id,text, parse_mode='HTML')
     elif call.data == "komsa":
       text = "\n\n" + '\n'.join(komsa)
-      bot.send_message(call.message.chat.id,text)
+      bot.send_message(call.message.chat.id,text, parse_mode='HTML')
     elif call.data == "tovar":
       text = "\n\n" + '\n'.join(tovar)
-      bot.send_message(call.message.chat.id,text)
+      bot.send_message(call.message.chat.id,text, parse_mode='HTML')
     elif call.data == "delikt":
       text = "\n\n" + '\n'.join(delikt)
-      bot.send_message(call.message.chat.id,text)
+      bot.send_message(call.message.chat.id,text, parse_mode='HTML')
     elif call.data == "kond":
       text = "\n\n" + '\n'.join(kond)
-      bot.send_message(call.message.chat.id,text)
+      bot.send_message(call.message.chat.id,text, parse_mode='HTML')
     elif call.data == "nasl":
       text = "\n\n" + '\n'.join(nasl)
-      bot.send_message(call.message.chat.id,text)
+      bot.send_message(call.message.chat.id,text, parse_mode='HTML')
     elif call.data == "zaem":
       text = "\n\n" + '\n'.join(zaem)
-      bot.send_message(call.message.chat.id,text)
+      bot.send_message(call.message.chat.id,text, parse_mode='HTML')
 
     elif call.data == "neust":
           markup = types.InlineKeyboardMarkup()
@@ -216,18 +216,18 @@ def callback(call):
           bot.answer_callback_query(call.id)
     elif call.data == "pr_pr":
       text = "\n\n" + '\n'.join(pravovaya_priroda)
-      bot.send_message(call.message.chat.id,text)
+      bot.send_message(call.message.chat.id,text, parse_mode='HTML')
 
     elif call.data == "formasogl":
       text = "\n\n" + '\n'.join(forma_soglasheniya)
-      bot.send_message(call.message.chat.id,text)
+      bot.send_message(call.message.chat.id,text, parse_mode='HTML')
 
     elif call.data == "vidy":
       text = "\n\n" + '\n'.join(vidy)
-      bot.send_message(call.message.chat.id,text)
+      bot.send_message(call.message.chat.id,text, parse_mode='HTML')
 
     elif call.data == "sootn":
       text = "\n\n" + '\n'.join(sootnoshenie_neustoyki_ubitkov)
-      bot.send_message(call.message.chat.id,text)
+      bot.send_message(call.message.chat.id,text, parse_mode='HTML')
 
 bot.polling(none_stop=True)
