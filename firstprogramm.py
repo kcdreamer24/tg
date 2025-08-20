@@ -114,19 +114,14 @@ def callback(call):
     elif call.data == "chinese_terms":
             text = "КНР:\n\n" + '\n'.join(terms)
             bot.send_message(call.message.chat.id,text)
-            start_text = "\n\n" + "\n".join(hello1)  
-            bot.send_message(call.message.chat.id, start_text, reply_markup=markup)
+        
     elif call.data == "chinese_terms_2":
             text = "система законодательства:\n\n" + '\n'.join(term1)
             bot.send_message(call.message.chat.id,text)
-            start_text = "\n\n" + "\n".join(hello1)  
-            bot.send_message(call.message.chat.id, start_text, reply_markup=markup)
+
     elif call.data == "chinese_terms_3":
             text = "договоры:\n\n" + '\n'.join(term2)
             bot.send_message(call.message.chat.id,text)
-            start_text = "\n\n" + "\n".join(hello1)  
-            bot.send_message(call.message.chat.id, start_text, reply_markup=markup)
-
     elif call.data == "law_rf":
           markup = types.InlineKeyboardMarkup()
           btn4 = types.InlineKeyboardButton('Гражданское право', callback_data = 'gk')  
