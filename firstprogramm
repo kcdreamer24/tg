@@ -1,11 +1,14 @@
 import telebot
+import os
 from telebot import types 
 from terms import terms, term1, term2
 from impdates import constitutions, hello1
 from companylaw1 import informa, informa1
 from sudprakt import kp, mena, dar, arenda, lizing, podrad, uslugi, perevozka, celine, komsa, tovar, delikt, kond, nasl, zaem, pravovaya_priroda, forma_soglasheniya, vidy, sootnoshenie_neustoyki_ubitkov
 
-
+# 🔑 Токен берём из переменной окружения
+TOKEN = os.getenv("BOT_TOKEN")
+bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
 def hello(message):
